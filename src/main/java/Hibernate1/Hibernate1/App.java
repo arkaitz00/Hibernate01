@@ -1,5 +1,7 @@
 package Hibernate1.Hibernate1;
 
+
+
 /**
  * Hello world!
  *
