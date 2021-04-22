@@ -21,9 +21,10 @@ public class App{
     	Session s = HibernateUtil.getSessionFactory().openSession();
     	//DepartamentoDao.insertarDepartamento(s, 4, "Marketing", 1);
     	//DepartamentoDao.editarDepartamento(s, 4, "Ocio");
+    	DepartamentoDao.borrarDepartamento(s, 4);
     	//EmpleadoDao.insertarEmpleado(s, 2, "Carlos", "Perez", "Lopez", "Monfarracinos", "31-01-18", "Tres cruces", 700060020, "Administrador", 4);
     	//EmpleadoDao.editarEmpleado(s, 2, "Plaza alemania", 900024536, "RRHH");
-    	EmpleadoDao.borrarEmpleado(s, 2);
+    	//EmpleadoDao.borrarEmpleado(s, 2);
     	logger.info("Ha acabado la ejecucion del programa");
     }
 }

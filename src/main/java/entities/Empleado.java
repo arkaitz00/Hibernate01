@@ -1,12 +1,48 @@
 package main.java.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "empleado")
 public class Empleado {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Column(name = "codigo")
 	int codigo;
-	String nombre, apellido1, apellido2, lugar_nacimiento, fecha_nacimiento, direccion;
+	
+	@Column(name = "nombre", nullable = false)
+	String nombre; 
+	
+	@Column(name = "apellido1", nullable = false)
+	String apellido1; 
+	
+	@Column(name = "apellido2", nullable = false)
+	String apellido2; 
+	
+	@Column(name = "lugar_nacimiento", nullable = false)
+	String lugar_nacimiento;
+	
+	@Column(name = "fecha_nacimiento", nullable = false)
+	String fecha_nacimiento; 
+	
+	@Column(name = "direccion", nullable = false)
+	String direccion;
+	
+	@Column(name = "telefono", nullable = false)
 	long telefono;
+	
+	@Column(name = "puesto", nullable = false)
 	String puesto;
+	
+	@Column(name = "cod_departamento", nullable = false)
 	int cod_departamento;
+	
 	public Empleado() {
 		
 	}	

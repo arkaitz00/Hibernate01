@@ -2,10 +2,26 @@ package main.java.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "departamento")
 public class Departamento implements Serializable{
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Column(name = "codigo")
 	int codigo;
+	
+	@Column(name = "nombre", nullable = false)
 	String nombre;
+	
+	@Column(name = "cod_responsable", nullable = false)
 	int cod_responsable;
 	
 	
