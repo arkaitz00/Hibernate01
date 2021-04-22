@@ -1,9 +1,17 @@
 package main.java.dao;
 
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 
 import main.java.entities.Empleado;
 
@@ -61,6 +69,7 @@ public class EmpleadoDao {
 		}
 	}
 	
+	
 	public static void editarEmpleado(Session s, int codigo, String direccion, long telefono, String puesto) {
 		Transaction t = s.beginTransaction();
 		try {
@@ -80,6 +89,24 @@ public class EmpleadoDao {
 			logger.error(ex);
 			t.rollback();
 		}
+	}
+	
+
+	public static List<Empleado> listarEmpleadosPorDepartamento(Session s, int cod_departamento) {
+		String hql = "from Empleado e where cod_departamento = :cod_departamento";
+		List lista = s.createQuery(hql, Empleado.class).setParameter("cod_departamento", cod_departamento).list();		
+		return lista;
+	}
+	
+	public static List<Empleado> mayorQue(Session s, int edad) {
+		List lista;
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<Empleado> query = builder.createQuery(Empleado.class);
+		Root<Empleado> root = query.from(Empleado.class);
+		query.select(root).where(builder.equal(root.get("fecha_nacimiento"), edad));
+		Query<Empleado> q = s.createQuery(query);
+		lista = q.getResultList();
+		return lista;
 	}
 	
 }

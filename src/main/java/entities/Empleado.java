@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class Empleado {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "codigo")
 	int codigo;
 	
@@ -139,5 +138,13 @@ public class Empleado {
 	
 	public void setCod_departamento(int cod_departamento) {
 		this.cod_departamento = cod_departamento;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [codigo=" + codigo + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2="
+				+ apellido2 + ", lugar_nacimiento=" + lugar_nacimiento + ", fecha_nacimiento=" + fecha_nacimiento
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", puesto=" + puesto + ", cod_departamento="
+				+ cod_departamento + "]";
+	}
 }
